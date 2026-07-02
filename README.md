@@ -6,12 +6,12 @@
 
 Lint transactional email templates for unsafe links and missing unsubscribe language. It solves review drift by turning plain-text plans into deterministic CI-friendly findings.
 
-## Input Contract 36
+## Input Contract
 
 Accepts email template. The reader supports plain text, JSON, JSONL, and CSV so the
 tool can fit into scripts, CI jobs, and review exports.
 
-## CLI Walkthrough 36
+## CLI Walkthrough
 
 ```bash
 python -m pip install -e ".[dev]"
@@ -20,7 +20,7 @@ email-template-check examples/sample.txt --json --fail-on medium
 python -m email_template_check --help
 ```
 
-## Rule Surface 36
+## Rule Surface
 
 | Rule | Severity | Meaning |
 |---|---:|---|
@@ -28,7 +28,7 @@ python -m email_template_check --help
 | `missing-unsubscribe` | medium | unsubscribe language missing |
 | `missing-support` | low | support contact missing |
 
-## Validation Notes 36
+## Validation Notes
 
 ```bash
 ruff check .
