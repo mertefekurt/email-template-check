@@ -1,41 +1,34 @@
-<img src="assets/readme-cover.svg" alt="Email Template Check cover" width="100%" />
-
 # Email Template Check
 
-Lint transactional email templates for unsafe links and missing unsubscribe language.
+Lint transactional email templates for unsafe links and missing unsubscribe language. In practice it is a narrow guardrail for support, sales, product analytics, and documentation hygiene: one command, a concrete report, and very little ceremony.
 
-![stack](https://img.shields.io/badge/stack-Python-dc2626?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-7c3aed?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-0891b2?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-b45309?style=flat-square)
+<img src="assets/readme-cover.svg" alt="Email Template Check cover" width="100%" />
 
-## Workflow
+## Review checklist
 
-1. Collect the review notes or exported records.
-2. Run `email-template-check` against the file.
-3. Read the findings in Markdown, or switch to JSON for automation.
-4. Fail CI only at the severity level you care about.
+- [ ] insecure link detected (`insecure-link`, high)
+- [ ] unsubscribe language missing (`missing-unsubscribe`, medium)
+- [ ] support contact missing (`missing-support`, low)
 
-## Checks
-
-| Rule | Severity | What it catches |
-| --- | --- | --- |
-| `insecure-link` | high | insecure link detected |
-| `missing-unsubscribe` | medium | unsubscribe language missing |
-| `missing-support` | low | support contact missing |
-
-## Command line
+## Command path
 
 ```bash
+git clone https://github.com/mertefekurt/email-template-check.git
+cd email-template-check
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
 email-template-check examples/sample.txt
-email-template-check examples/sample.txt --json --fail-on medium
+email-template-check examples/sample.txt --json
 ```
 
-## Sample risky input
+## Fixture worth keeping
 
 ```text
 reset password link http://example.com unsubscribe missing support none
 ```
 
-## Project shape
+## Files I look at first
 
 ```text
 .github/        CI workflow
